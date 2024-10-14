@@ -26,7 +26,7 @@ export const Heading = () => {
       )}
       {isAuthenticated && !isLoading && (
         <Button asChild>
-          <Link href="/documents">Let's Go</Link>
+          <Link href="/documents">Here We Go</Link>
         </Button>
       )}
       {!isAuthenticated && !isLoading && (
