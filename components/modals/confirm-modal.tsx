@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/alert-dialog';
 
 interface ConfirmModalProps {
-  children: React.ReachNode;
+  children: React.ReactNode;
   onConfirm: () => void;
 }
 
