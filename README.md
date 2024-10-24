@@ -17,9 +17,3 @@ Check out the live version [here](https://note-taker-livid.vercel.app/).
 - **TypeScript** for type-safe development.
 - **CSS** for styling.
 - **JavaScript** for interactive UI.
-
-## 📦 Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/GauravKavat/notion.git
