@@ -3,7 +3,7 @@
 A sleek, minimalist web app inspired by **Notion**, built with **TypeScript**, **JavaScript**, and **CSS**. It offers a flexible workspace for note-taking, project management, and document organization, bringing powerful functionality with a user-friendly interface.
 
 ## 🌟 Live Demo
-Check out the live version [here](your-deployment-link).
+Check out the live version [here](https://note-taker-livid.vercel.app/).
 
 ## 🚀 Features
 - Create, edit, and manage pages with nested sub-pages.
