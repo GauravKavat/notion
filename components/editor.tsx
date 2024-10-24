@@ -1,12 +1,12 @@
 'use client';
 
-import { BlockNoteEditor, PartialBlock } from '@blocknote/core';
-import { useCreateBlockNote } from '@blocknote/react';
-import { BlockNoteView } from '@blocknote/mantine';
 import '@blocknote/mantine/style.css';
-import '@blocknote/core/style.css';
 import { useTheme } from 'next-themes';
+import '@blocknote/core/fonts/inter.css';
 import { useEdgeStore } from '@/lib/edgestore';
+import { BlockNoteView } from '@blocknote/mantine';
+import { useCreateBlockNote } from '@blocknote/react';
+import { BlockNoteEditor, PartialBlock } from '@blocknote/core';
 
 interface EditorProps {
   onChange: (value: string) => void;
@@ -14,23 +14,22 @@ interface EditorProps {
   editable?: boolean;
 }
 
-const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
+export const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
   const { resolvedTheme } = useTheme();
   const { edgestore } = useEdgeStore();
 
   const handleUpload = async (file: File) => {
-    const response = await edgestore.publicFiles.upload({ file });
+    const response = await edgestore.publicFiles.upload({
+      file,
+    });
+
     return response.url;
   };
 
-  const editor: BlockNoteEditor | null = useCreateBlockNote({
-    // editable,
+  const editor: BlockNoteEditor = useCreateBlockNote({
     initialContent: initialContent
       ? (JSON.parse(initialContent) as PartialBlock[])
       : undefined,
-    // onEditorContentChange: (editor) => {
-    //   onChange(JSON.stringify(editor.topLevelBlocks, null, 2));
-    // },
     uploadFile: handleUpload,
   });
 
@@ -38,8 +37,11 @@ const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
     <div>
       <BlockNoteView
         editor={editor}
-        editable={editable}
         theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
+        editable={editable}
+        onChange={() => {
+          onChange(JSON.stringify(editor.document, null, 2));
+        }}
       />
     </div>
   );
